@@ -24,8 +24,8 @@ copyright = f"2021-{date.today().year}, EURODECISION"
 author = 'Renan Hilbert'
 
 # The full version, including alpha/beta/rc tags
-version = 0.0.1 # pdcleaner.__version__
-release = 0.0.1 # pdcleaner.__version__
+version = "0.0.1" # pdcleaner.__version__
+release = "0.0.1" # pdcleaner.__version__
 
 # -- General configuration ---------------------------------------------------
 source_suffix = ['.rst', '.md']
