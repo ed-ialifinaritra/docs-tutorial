@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10 minutes to pandas-cleaner &#8212; pandas-cleaner 0.0.1 documentation</title>
+    
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+    
+      
+  
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example dataset" href="example_dataset.html" />
+    <link rel="prev" title="Installation" href="install.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo_pandas-cleaner.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributing/index.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../release/index.html">
+  Release notes
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://edgitlab.eurodecision.com/data/pandas-cleaner" rel="noopener" target="_blank" title="GitLab"><span><i class="fab fa-gitlab"></i></span>
+            <label class="sr-only">GitLab</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10 minutes to pandas-cleaner
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="example_dataset.html">
+   Example dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handling_num_series.html">
+   Handling numerical series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cleaning_methods.html">
+   Using different cleaning methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handling_gauss_series.html">
+   Handling gaussian series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clean_by_category.html">
+   Cleaning numerical data by category
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handling_multivar.html">
+   Handling multivariate numerical datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handling_cat_series.html">
+   Handling categorical series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handling_multicategories.html">
+   Handling multi-categorical datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clean_text.html">
+   Cleaning text
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav><div class="sidebar-end-items">
+<a href="https://www.eurodecision.eu/" target="_blank">
+
+<img src="https://www.eurodecision.com/wp-content/themes/eurodecision/img/logo-eurod.jpg" width=250>
+</a>
+</div>
+
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detection">
+   Detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cleaning">
+   Cleaning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reapply-to-fresh-data">
+   Reapply to fresh data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#going-further">
+   Going further
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="minutes-to-pandas-cleaner">
+<h1>10 minutes to pandas-cleaner<a class="headerlink" href="#minutes-to-pandas-cleaner" title="Permalink to this headline">¶</a></h1>
+<p>This is a short overview, for new users, of what you can do with pandas cleaner.
+Much more detailed information can be found in the rest of the
+documentation.</p>
+<p>Once installed, pandas-cleaner is normally imported as follows:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pdcleaner</span>
+</pre></div>
+</div>
+<p>The objective of the package is to extend pandas capabilities by
+introducing methods to detect, analyze and clean potential errors in a dataset.</p>
+<p>Let us see that in practice with a very simple series of numbers.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">series</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>       <span class="mf">0.0</span>
+<span class="mi">1</span>       <span class="mf">1.0</span>
+<span class="mi">2</span>       <span class="mf">0.8</span>
+<span class="mi">3</span>    <span class="mf">1000.0</span>
+<span class="mi">4</span>       <span class="mf">1.3</span>
+<span class="mi">5</span>      <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>The value 1000 is obviously an outlier ! The negative value may be an
+error or not depending the case.</p>
+<p>With such simple and short series, it is very easy to spot potentially
+problematic values. But imagine you have to deal with 1 millions rows,
+this can not be done manually. Pandas clear offers functionnalities to do so
+automatically.</p>
+<section id="detection">
+<h2>Detection<a class="headerlink" href="#detection" title="Permalink to this headline">¶</a></h2>
+<p>Let us say we know that every value must be positive and the maximum
+possible value is 2. In order to detect errors, we can create a
+so-called detector, based on our series and using the detection method
+called <code class="docutils literal notranslate"><span class="pre">bounded</span></code> as follows:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="s1">&#39;bounded&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In pandas cleaner, all detection method are called with the same API
+<code class="docutils literal notranslate"><span class="pre">.cleaner.detect()</span></code> applied to pandas series or dataframes.</p>
+</div>
+<p>An equivalent way of creating the detector is as follows, with the same keyword but as a method.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">detect</span><span class="o">.</span><span class="n">bounded</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second syntax allows to access the documentation and examples
+related to the <code class="docutils literal notranslate"><span class="pre">bounded</span></code> method (with <code class="docutils literal notranslate"><span class="pre">Shift+Tab</span></code> in a notebook for
+example).</p>
+<p>Details on the arguments and examples are accessible via <cite>help(series.cleaner.detect.bounded)</cite> or in the API reference section of this doc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pandas cleaner offers a set of detection methods for different kind of
+quantitative and/or qualitative data:</p>
+<ul class="simple">
+<li><p>numerical series</p></li>
+<li><p>categorical series</p></li>
+<li><p>numerical series attached to different categories</p></li>
+<li><p>set of categories/sub-categories</p></li>
+<li><p>multivariate numerical dataframes</p></li>
+</ul>
+<p>A comprehensive list, along with the associated keywords, can be found
+in the API reference section of this documentation.</p>
+<p>Examples of use for     the different types of data are given the next section of this user guide.</p>
+</div>
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Once the detector created, many information can be retrevied about the
+detected errors.</p>
+<ul class="simple">
+<li><p>Are the any errors ?</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">has_errors</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>How many ?</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">n_errors</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Which are they ?</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">detected</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>    <span class="mf">1000.0</span>
+<span class="mi">5</span>      <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Each row can easily be tagged as an error or not:</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">is_error</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="kc">False</span>
+<span class="mi">1</span>    <span class="kc">False</span>
+<span class="mi">2</span>    <span class="kc">False</span>
+<span class="mi">3</span>     <span class="kc">True</span>
+<span class="mi">4</span>    <span class="kc">False</span>
+<span class="mi">5</span>     <span class="kc">True</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>One can plot valid values, limits and number of errors detected above and below the limits</p></li>
+</ul>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">compact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/detector_plot_10min.png" src="../_images/detector_plot_10min.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pandas-cleaner provides plotting utilities to visualize:</p>
+<ul class="simple">
+<li><p>Outliers in numerical series,</p></li>
+<li><p>Inconsistencies in categories/sub-categories associations,</p></li>
+<li><p>Multiple formatting for the classes in categorical series.</p></li>
+</ul>
+<p>Check the rest of the documentation, the user guide and the API
+reference for examples and details.</p>
+</div>
+</section>
+<section id="cleaning">
+<h2>Cleaning<a class="headerlink" href="#cleaning" title="Permalink to this headline">¶</a></h2>
+<p>Say we want to get rid of the detected errors to work with a clean dataset
+(as an input of a machine learning model or for a BI dashboard…).</p>
+<p>There are more than one way to clean the dataset, depending of the
+objective. With pandas-cleaner, different methods can be used with the
+same interface function <code class="docutils literal notranslate"><span class="pre">cleaner.clean()</span></code>. Let us see two examples.</p>
+<p>One can simply get rid of the lines with errors. To do so, the <code class="docutils literal notranslate"><span class="pre">drop</span></code>
+method is appropriate and  usable as follows :</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s1">&#39;drop&#39;</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+<span class="n">clean_series</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="mf">0.0</span>
+<span class="mi">1</span>    <span class="mf">1.0</span>
+<span class="mi">2</span>    <span class="mf">0.8</span>
+<span class="mi">4</span>    <span class="mf">1.3</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>or, alternatively, just as for <code class="docutils literal notranslate"><span class="pre">detect</span></code> :</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_series</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span>
+<span class="n">clean_series</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="mf">0.0</span>
+<span class="mi">1</span>    <span class="mf">1.0</span>
+<span class="mi">2</span>    <span class="mf">0.8</span>
+<span class="mi">4</span>    <span class="mf">1.3</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<p>The documentation is accessible via <code class="docutils literal notranslate"><span class="pre">help(series.cleaner.clean.drop)</span></code>
+or in the API reference section of this doc.</p>
+<p>Consider now that you want to “clip” the errors, meaning all negative
+values should be set to zero and all above above the maximum capped at
+the maximum value. This is simply done with the clip method, that uses
+lower and upper values that are attributes of the detector.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;min : </span><span class="si">{</span><span class="n">detector</span><span class="o">.</span><span class="n">lower</span><span class="si">}</span><span class="s2">, max: </span><span class="si">{</span><span class="n">detector</span><span class="o">.</span><span class="n">upper</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">min</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s1">&#39;clip&#39;</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="mf">0.0</span>
+<span class="mi">1</span>    <span class="mf">1.0</span>
+<span class="mi">2</span>    <span class="mf">0.8</span>
+<span class="mi">3</span>    <span class="mf">2.0</span>
+<span class="mi">4</span>    <span class="mf">1.3</span>
+<span class="mi">5</span>    <span class="mf">0.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cleaning methods have an <code class="docutils literal notranslate"><span class="pre">inplace</span></code> option to overwrite the original data.</p>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s1">&#39;clip&#39;</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">series</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>    <span class="mf">0.0</span>
+<span class="mi">1</span>    <span class="mf">1.0</span>
+<span class="mi">2</span>    <span class="mf">0.8</span>
+<span class="mi">3</span>    <span class="mf">2.0</span>
+<span class="mi">4</span>    <span class="mf">1.3</span>
+<span class="mi">5</span>    <span class="mf">0.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other cleaning methods are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace problematic cells by a value, or using a dict or a callable function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_na</span></code> to empty problematic cells and then use any missing-value imputation method</p></li>
+<li><p>some other methods are specific to categorical detection methods, such as <code class="docutils literal notranslate"><span class="pre">bykeys</span></code> that is used along with <code class="docutils literal notranslate"><span class="pre">keycollision</span></code> detectors to identify typos or alternative formulations, e.g when <cite>Linus Torvald</cite> and <cite>torvald, linus</cite> should be same.</p></li>
+</ul>
+<p>See details along with examples in the user guide or the API reference.</p>
+</div>
+</section>
+<section id="reapply-to-fresh-data">
+<h2>Reapply to fresh data<a class="headerlink" href="#reapply-to-fresh-data" title="Permalink to this headline">¶</a></h2>
+<p>Say you have determined the min and max valid values on a set of 1M
+rows. If the dataset is updated, you may not want/need to recalculate
+the detector parameters, but simply apply them to clean a samaller set of
+new rows.</p>
+<p>This can for example be the case if the detector is part of an ETL
+cleaning pipeline followed by the fitting of a machine learning model.
+In this case, the detector has to be “fitted” on the train set, and then
+applied as a tranformation step on the test set or, later, to new data during the
+inference/prediction step.</p>
+<p>To do so, pandas cleaner <code class="docutils literal notranslate"><span class="pre">detect</span></code> API method can be called with an
+already “fitted” detector. For example, if we want to apply our bounded
+detector to a new series:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">235</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>this can be done as follows:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector2</span> <span class="o">=</span> <span class="n">series2</span><span class="o">.</span><span class="n">cleaner</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">detector</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This detects the following problematic lines :</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detector2</span><span class="o">.</span><span class="n">detected</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>     <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span>    <span class="mi">235</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+</section>
+<section id="going-further">
+<h2>Going further<a class="headerlink" href="#going-further" title="Permalink to this headline">¶</a></h2>
+<p>The following sections in this user guide give more detailed examples to use pandas-cleaner with different kind of data.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="install.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="example_dataset.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example dataset</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021-2022, EURODECISION.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

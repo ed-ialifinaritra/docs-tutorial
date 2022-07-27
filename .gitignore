@@ -25,9 +25,15 @@ __pycache__/
 # C extensions
 *.so
 
+# editor/temporary files
+.vscode/
+.ipynb_checkpoints/
+.idea/
+.pytest_cache/
+
 # Distribution / packaging
 .Python
-build/
+
 develop-eggs/
 dist/
 downloads/
@@ -87,8 +93,6 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
 
 # PyBuilder
 .pybuilder/
